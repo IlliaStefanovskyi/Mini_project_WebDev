@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    </link>
+    <!--importing font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Main</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="nav_header hilight_nav" href="index.html">Home</a>
+            <a class="nav_header" href="products.html">Products</a>
+            <a class="nav_header" href="contact.html">Contact Us</a>
+            <a href="cart.html"><img class="cart_image" src="images/cart.webp" alt="shopping cart"></a>
+        </nav>
+        <div class="header_container">
+            <div class="header_links">
+                <a class="local_nav" href="#about_us">About us</a>
+                <a class="local_nav" href="#products_discount">Best deals</a>
+            </div>
+            <div class="slideshow_container">
+                <div class="button_slide" id="left_b">
+                    <p>←</p>
+                </div>
+                <div class="slideshow">
+                    <a href="#delivery"><img src="images/slide1.png" alt="delivery" class="slide" id="slide1"></a>
+                    <a href="#pricing"><img src="images/slide2.png" alt="price" class="slide" id="slide2"></a>
+                    <a href="#products"><img src="images/slide3.png" alt="products" class="slide" id="slide3"></a>
+                    <a href="contact.html"><img src="images/slide4.png" alt="services" class="slide" id="slide4"></a>
+                </div>
+                <div class="button_slide" id="right_b">
+                    <p>→</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1 id="about_us">About us</h1>
+        <h2>Who are we?</h2>
+        <div class="info_block">
+            <p class="info_text">We are on the market since 1991. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Nunc euismod
+                metus
+                id dui viverra, vel mollis quam finibus. Morbi ultricies libero non sapien egestas tristique. Ut et
+                neque
+                vitae neque pellentesque interdum sit amet vitae metus. Etiam ut faucibus eros, et pretium ante. Nullam
+                non
+                porta nisl. Mauris non justo ligula. Praesent ac tincidunt quam. Praesent a urna arcu. Duis placerat
+                ullamcorper risus, tincidunt volutpat nisi pulvinar a.</p>
+            <div class="image_container_2">
+                <div class="image_container">
+                    <img src="images/logo.webp" height="165rem">
+                </div>
+            </div>
+        </div>
+
+        <h2 id="delivery">Delivery</h2>
+        <div class="info_block_left">
+            <div class="image_container_2">
+                <div class="image_container">
+                    <img src="images/delivery_main.jpeg" height="165rem">
+                </div>
+            </div>
+            <p class="info_text">We are on the market since 1991. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Nunc euismod
+                metus
+                id dui viverra, vel mollis quam finibus. Morbi ultricies libero non sapien egestas tristique. Ut et
+                neque
+                vitae neque pellentesque interdum sit amet vitae metus. Etiam ut faucibus eros, et pretium ante. Nullam
+                non
+                porta nisl. Mauris non justo ligula. Praesent ac tincidunt quam. Praesent a urna arcu. Duis placerat
+                ullamcorper risus, tincidunt volutpat nisi pulvinar a.</p>
+        </div>
+
+        <h2 id="pricing">Pricing</h2>
+        <div class="info_block">
+            <p class="info_text">We are on the market since 1991. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Nunc euismod
+                metus
+                id dui viverra, vel mollis quam finibus. Morbi ultricies libero non sapien egestas tristique. Ut et
+                neque
+                vitae neque pellentesque interdum sit amet vitae metus. Etiam ut faucibus eros, et pretium ante. Nullam
+                non
+                porta nisl. Mauris non justo ligula. Praesent ac tincidunt quam. Praesent a urna arcu. Duis placerat
+                ullamcorper risus, tincidunt volutpat nisi pulvinar a.</p>
+            <div class="image_container_2">
+                <div class="image_container">
+                    <img src="images/pricing.avif" height="165rem">
+                </div>
+            </div>
+        </div>
+
+        <h2 id="products">Our products</h2>
+        <div class="info_block_left">
+            <div class="image_container_2">
+                <div class="image_container">
+                    <img src="images/products_main.webp" height="165rem">
+                </div>
+            </div>
+            <p class="info_text">We are on the market since 1991. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Nunc euismod
+                metus
+                id dui viverra, vel mollis quam finibus. Morbi ultricies libero non sapien egestas tristique. Ut et
+                neque
+                vitae neque pellentesque interdum sit amet vitae metus. Etiam ut faucibus eros, et pretium ante. Nullam
+                non
+                porta nisl. Mauris non justo ligula. Praesent ac tincidunt quam. Praesent a urna arcu. Duis placerat
+                ullamcorper risus, tincidunt volutpat nisi pulvinar a.</p>
+        </div>
+
+        <h1 id="products_discount">Best products with discount</h1>
+        <div class="discounted_items_block">
+            <div class="item_block" id="block_0">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_0">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="0">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_1">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_1">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="1">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_2">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_2">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="2">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_3">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_3">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="3">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_4">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_4">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="4">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_5">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_5">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="5">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_6">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_6">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="6">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_7">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_7">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="7">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_8">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_8">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="8">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_9">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_9">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="9">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+
+            <div class="item_block" id="block_10">
+                <div class="item_block_img_container">
+                    <img src="images/item1.jpg" alt="Pricing Image" height="180px">
+                </div>
+                <p class="item_block_text">Asus ROG strix g512li / 512gb / 16ram / intel i7 10743 / geforce GTX 1650</p>
+                <div class="item_price_button">
+                <p class="item_block_price item_block_deal" id="price_10">€899</p><!--"item_block_deal" class is only for the discounted products-->
+                <button class="item_button" value="10">Add to basket</button><!--VALUE is the number of product, each product has new value, it is used to add the item to the basket-->
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer_block footer_block_s1">
+            <p class="footer_p">Also you may be interested</p>
+            <ul>
+                <a href="...">
+                    <li>Chinese cuisine</li>
+                </a>
+                <a href="...">
+                    <li>Our menu</li>
+                </a>
+                <a href="...">
+                    <li>Specials</li>
+                </a>
+                <a href="...">
+                    <li>Events</li>
+                </a>
+            </ul>
+        </div>
+        <div class="footer_block">
+            <p class="footer_p">Our locations</p>
+            <ul>
+                <a href="...">
+                    <li>Chinese cuisine</li>
+                </a>
+                <a href="...">
+                    <li>Our menu</li>
+                </a>
+                <a href="...">
+                    <li>Specials</li>
+                </a>
+            </ul>
+        </div>
+        <div class="footer_block footer_block_s2">
+            <p class="footer_p">Contacts</p>
+            <ul>
+                <li class="footer_contact">Phone: +1234554321</li>
+                <li class="footer_contact">Our email: <a href="mailto:shop@gmail.com">shop@gmail.com</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
