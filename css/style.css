@@ -26,6 +26,9 @@ a:hover{
 
 
 /*header OVERALL                               (BY ILLIA)*/
+.nav_header:nth-child(3){
+    margin-right:1.5rem;
+}
 .cart_container{
     text-align:center;
 }
@@ -66,11 +69,13 @@ width:100%;
     height:2.4rem;
     margin-top:.3rem;
     margin-right:.3rem;
+    transition:.1s ease-in-out;
 }
 .cart_image:hover{
     height:2.3rem;
     margin-top:.35rem;
     margin-left:.1rem;
+    transition:.2s ease-in-out;
 }
 #all_header_main{/*only for the header on the main page*/
     height:30rem;
