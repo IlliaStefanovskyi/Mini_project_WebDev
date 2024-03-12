@@ -26,6 +26,17 @@ a:hover{
 
 
 /*header OVERALL                               (BY ILLIA)*/
+.cart_container{
+    text-align:center;
+}
+.cart_counter{
+    background-color:#ff8300;
+    display:block;
+    border-radius:50px;
+    width:20px;
+    margin-top:-2.9rem;
+    margin-left:-1rem;
+}
 nav{
 background-color:#4a4a4a;
 padding:0rem;
