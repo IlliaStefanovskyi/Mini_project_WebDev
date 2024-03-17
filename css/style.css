@@ -287,7 +287,13 @@ gap:10px;
     margin:10px;
     margin-top:10px;
 }
-
+#first {
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-top: -10px;
+    height: 160px;
+    overflow-y: initial;
+}
 /*//Index page*/
 /*Item block OVERALL                       (BY ILLIA)*/
 .item_block{
@@ -304,6 +310,8 @@ gap:10px;
     padding-left:10px;
     padding-right:5px;
     margin-top:-10px;
+    overflow-y: scroll;
+    height:70px;
 }
 .item_block_price{
     color:#522c2c;
