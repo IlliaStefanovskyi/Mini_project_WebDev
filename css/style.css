@@ -225,6 +225,8 @@ aside{
     margin-top:2rem;
     margin-right:40%;
     margin-left:20%;
+    display:grid;
+    row-gap:10px;
 }
 @media(max-width:1000px){
 aside{
@@ -329,13 +331,14 @@ gap:10px;
 }
 .item_block_img_container{
     overflow:hidden;
-    margin:10px;
-    margin-top:10px;
+    margin-right:10px;
+    margin-left:10px;
+    padding-top:10px;
 }
 .item_block_text{
     padding-left:10px;
     padding-right:5px;
-    margin-top:-10px;
+    margin-top:-3px;
     overflow-y: scroll;
     height:70px;
 }
