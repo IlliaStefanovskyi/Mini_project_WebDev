@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         const result = await response.json();//transformation to json
         console.log(result);
         let description = document.querySelectorAll(".item_block_text");//gets elements to change
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 10; i++) {
             description[i].innerHTML = result[i].title;//assigns new contents to the elements 
         }
     } catch (error) {
@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         const result = await response.json();//translates to json
         console.log(result);
         let image_spaces=document.querySelectorAll(".images_prod_main");//gets image spaces from html
-        for(let i=0;i<5;i++){
-            image_spaces[i].src=result.results[i+13].image;//changes the default images to the ones in API response
+        for(let i=0;i<10;i++){
+            image_spaces[i].src=result.results[i+6].image;//changes the default images to the ones in API response
         }
     } catch (error) {
         console.error(error);

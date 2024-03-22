@@ -205,7 +205,7 @@ footer{
 main{
     background-color: #e6fdfd;
     border-radius:20px;
-    margin-right:8%;
+    margin-right:2%;
     margin-left:8%;
     margin-top:2%;
     margin-bottom:2%;
@@ -213,6 +213,32 @@ main{
     padding-right:1rem;
     padding-top:.1rem;
     padding-bottom:1rem;
+
+    grid-column:1/11;/*for grid layout*/
+}
+.main_container{
+    display:grid;
+    width:100%;
+    grid-template-columns: repeat(12, 1fr);
+}
+aside{
+    margin-top:2rem;
+    margin-right:40%;
+    margin-left:20%;
+}
+@media(max-width:1000px){
+aside{
+    margin-left:1%;
+    margin-right:0%;
+}
+}
+@media(max-width:720px){
+    aside{
+        display:none;
+    }
+    main{
+        grid-column:1/12;
+    }
 }
 #about_us{
     display:grid;
@@ -260,7 +286,7 @@ display:grid;
 grid-template:305px 305px/200px 200px 200px 200px;
 gap:10px;
 }
-@media(max-width:1000px){
+@media(max-width:1200px){
     .grid_discounted{
         grid-template:305px 305px 305px 305px/200px 200px;
         }
