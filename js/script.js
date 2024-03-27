@@ -20,6 +20,8 @@ $(document).ready(function () {
 
     showSlide(currentSlide);
 });
+
+
 /*cart script will be activated as only the page gets loaded, it has an array of integers, each time "Add to basket" is clicked on any product, its value(value="5") is transferred to this array. 
 each block id="block_5" and price id="price_5" of the product has an id with the same number, this way I can display this product block and count the value*/
 document.addEventListener('DOMContentLoaded', async function getDescription() {//this function receives the description of products from the API
@@ -66,9 +68,21 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         console.error(error);
     }
 });
+
+
 //The cart code starts here***************
+//makes cart visible or not
 $(document).ready(function(){
     $(".cart_image").click(function(){
         $(".cart_page_container").toggle();
+    });
+//adds items to the cart
+    let ordItemsCounter=0
+    $(".item_button").click(function(){
+        ordItemsCounter++;//counter for number of ordered items
+        var itemBlock = $(this).closest(".jsItemBlock");
+        var clonedItem = itemBlock.clone();//clones closest jsItemBlock to the button
+        clonedItem.appendTo(".cart_contents");//appends cloned result to the cart div
+        $(".cart_counter").text(ordItemsCounter);
     });
 });
