@@ -66,3 +66,9 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         console.error(error);
     }
 });
+//The cart code starts here***************
+$(document).ready(function(){
+    $(".cart_image").click(function(){
+        $(".cart_page_container").toggle();
+    });
+});
