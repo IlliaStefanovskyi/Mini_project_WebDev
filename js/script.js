@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         console.error(error);
     }
 
-
-    const url1 = 'https://free-images-api.p.rapidapi.com/images/wallpaper';//*******Images API import (ONLY 1000 REQUESTS PER DAY!!!)
+//enter search requests here instead of a laptop word %20 is space
+    const url1 = 'https://free-images-api.p.rapidapi.com/images/dell%20laptop%20images';//*******Images API import (ONLY 1000 REQUESTS PER DAY!!!)
     const options1 = {
         method: 'GET',
         headers: {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         console.log(result);
         let image_spaces=document.querySelectorAll(".images_prod_main");//gets image spaces from html
         for(let i=0;i<10;i++){
-            image_spaces[i].src=result.results[i+6].image;//changes the default images to the ones in API response
+            image_spaces[i].src=result.results[i].image;//changes the default images to the ones in API response
         }
     } catch (error) {
         console.error(error);
