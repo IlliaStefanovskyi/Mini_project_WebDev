@@ -71,18 +71,71 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
 
 
 //The cart code starts here***************
-//makes cart visible or not
 $(document).ready(function(){
+    //makes cart visible or not
     $(".cart_image").click(function(){
         $(".cart_page_container").toggle();
     });
-//adds items to the cart
-    let ordItemsCounter=0
-    $(".item_button").click(function(){
-        ordItemsCounter++;//counter for number of ordered items
-        var itemBlock = $(this).closest(".jsItemBlock");
-        var clonedItem = itemBlock.clone();//clones closest jsItemBlock to the button
-        clonedItem.appendTo(".cart_contents");//appends cloned result to the cart div
+    //adds items to the cart
+    let ordItemsCounter = 0;
+
+    $(".addItemButton").click(function() {
+        ordItemsCounter++;
+
+        $(this).removeClass("addItemButton");
+        $(this).addClass("removeItemButton");
         $(".cart_counter").text(ordItemsCounter);
+
+        // Change the src attribute of the image inside the clicked button
+        $(this).find("img").attr("src", "images/removeBasket.png");
+
+        var itemBlock = $(this).closest(".jsItemBlock");
+        var clonedItem = itemBlock.clone();
+        clonedItem.appendTo(".cart_page_container .cart .cart_contents");
+
+        // Add a click event listener to the remove button inside the cloned item block
+        clonedItem.find(".removeItemButton").click(function(){
+            // Remove the cloned item block from the cart container
+            clonedItem.remove();
+
+            // Decrease the order items counter
+            if(ordItemsCounter>0)
+                ordItemsCounter--;
+        $(".cart_counter").text(ordItemsCounter);
+
+            // Change the class of the remove button to add button
+            $(this).removeClass("removeItemButton");
+            $(this).addClass("addItemButton");
+            $(this).find("img").attr("src","images/addBasket.png");
+        });
+
+        // Add a click event listener to the remove button in the product
+        $(this).click(function(){
+            // Remove the cloned item block from the cart container
+            clonedItem.remove();
+
+            // Decrease the order items counter
+            if (ordItemsCounter > 0)
+                ordItemsCounter-2;
+
+            $(".cart_counter").text(ordItemsCounter);
+
+            // Change the class of the remove button to add button
+            $(this).removeClass("removeItemButton").addClass("addItemButton");
+            $(this).find("img").attr("src","images/addBasket.png");
+        });
     });
+
+    //remove items from cart
+    /*$(".removeItemButton").click(function() {
+        $(this).removeClass("removeItemButton");
+        $(this).addClass("addItemButton");
+        $(this).find("img").attr("src","images/addBasket.png");
+        // Decrease the order items counter
+            ordItemsCounter=0;
+        $(".cart_counter").text(ordItemsCounter);
+
+        var itemBlockInCart=$(".cart_contents").find(".jsItemBlock");
+        itemBlockInCart.remove();
+    });*/
 });
