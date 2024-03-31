@@ -229,10 +229,20 @@ aside{
     display:grid;
     row-gap:10px;
 }
+fieldset{
+    display:grid;
+    row-gap:10px;
+    height:970px;
+    margin-left:-15px;
+}
 @media(max-width:1000px){
 aside{
     margin-left:1%;
     margin-right:0%;
+}
+fieldset{
+    margin-left:0px;
+    margin-right:-20px;
 }
 }
 @media(max-width:720px){
@@ -339,9 +349,9 @@ gap:10px;
 .item_block_text{
     padding-left:10px;
     padding-right:5px;
-    margin-top:-3px;
-    overflow-y: scroll;
-    height:70px;
+    margin-top:20px;
+    overflow-y:hidden;
+    height:40px;
 }
 .item_block_price{
     color:#522c2c;

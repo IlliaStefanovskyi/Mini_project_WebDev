@@ -24,7 +24,10 @@ $(document).ready(function () {
 
 /*cart script will be activated as only the page gets loaded, it has an array of integers, each time "Add to basket" is clicked on any product, its value(value="5") is transferred to this array. 
 each block id="block_5" and price id="price_5" of the product has an id with the same number, this way I can display this product block and count the value*/
+
+
 document.addEventListener('DOMContentLoaded', async function getDescription() {//this function receives the description of products from the API
+    /* THIS api stopped responding LAPTOPS
     const url = 'https://latest-laptop-deals1.p.rapidapi.com/';//**********description API import
     const options = {
         method: 'GET',
@@ -44,10 +47,32 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         }
     } catch (error) {
         console.error(error);
-    }
+    }*/
+/*PIZZA unblock for presentation only LIMIT 1500 PER MONTH
+    const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=0';
+    const url2= 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=10';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'e7cf2100b3mshd9550b251301b38p11ea76jsnc7ff4c9dd65e',
+            'X-RapidAPI-Host': 'recipe-by-api-ninjas.p.rapidapi.com'
+        }
+    };
+    
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+        let description = document.querySelectorAll(".item_block_text");//gets elements to change
+        for (let i = 0; i < 10; i++) {
+            description[i].innerHTML = result[i].title;//assigns new contents to the elements 
+        }
+    } catch (error) {
+        console.error(error);
+    }*/
 
-//enter search requests here instead of a laptop word %20 is space
-    const url1 = 'https://free-images-api.p.rapidapi.com/images/dell%20laptop%20images';//*******Images API import (ONLY 1000 REQUESTS PER DAY!!!)
+//enter search requests here instead of a laptop word %20 is space dell%20laptop%20images
+    const url1 = 'https://free-images-api.p.rapidapi.com/images/pizza';//*******Images API import (ONLY 1000 REQUESTS PER DAY!!!)
     const options1 = {
         method: 'GET',
         headers: {
@@ -116,7 +141,7 @@ $(document).ready(function(){
 
             // Decrease the order items counter
             if (ordItemsCounter > 0)
-                ordItemsCounter-2;
+                ordItemsCounter--;
 
             $(".cart_counter").text(ordItemsCounter);
 
