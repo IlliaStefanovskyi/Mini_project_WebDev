@@ -48,30 +48,30 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
     } catch (error) {
         console.error(error);
     }*/
-/*PIZZA unblock for presentation only LIMIT 1500 PER MONTH
-    const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=0';
-    const url2= 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=10';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'e7cf2100b3mshd9550b251301b38p11ea76jsnc7ff4c9dd65e',
-            'X-RapidAPI-Host': 'recipe-by-api-ninjas.p.rapidapi.com'
-        }
-    };
-    
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result);
-        let description = document.querySelectorAll(".item_block_text");//gets elements to change
-        for (let i = 0; i < 10; i++) {
-            description[i].innerHTML = result[i].title;//assigns new contents to the elements 
-        }
-    } catch (error) {
-        console.error(error);
-    }*/
+    /*PIZZA unblock for presentation only LIMIT 1500 PER MONTH
+        const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=0';
+        const url2= 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=10';
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'e7cf2100b3mshd9550b251301b38p11ea76jsnc7ff4c9dd65e',
+                'X-RapidAPI-Host': 'recipe-by-api-ninjas.p.rapidapi.com'
+            }
+        };
+        
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            console.log(result);
+            let description = document.querySelectorAll(".item_block_text");//gets elements to change
+            for (let i = 0; i < 10; i++) {
+                description[i].innerHTML = result[i].title;//assigns new contents to the elements 
+            }
+        } catch (error) {
+            console.error(error);
+        }*/
 
-//enter search requests here instead of a laptop word %20 is space dell%20laptop%20images
+    //enter search requests here instead of a laptop word %20 is space dell%20laptop%20images
     const url1 = 'https://free-images-api.p.rapidapi.com/images/pizza';//*******Images API import (ONLY 1000 REQUESTS PER DAY!!!)
     const options1 = {
         method: 'GET',
@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         const response = await fetch(url1, options1);
         const result = await response.json();//translates to json
         console.log(result);
-        let image_spaces=document.querySelectorAll(".images_prod_main");//gets image spaces from html
-        for(let i=0;i<10;i++){
-            image_spaces[i].src=result.results[i].image;//changes the default images to the ones in API response
+        let image_spaces = document.querySelectorAll(".images_prod_main");//gets image spaces from html
+        for (let i = 0; i < 10; i++) {
+            image_spaces[i].src = result.results[i].image;//changes the default images to the ones in API response
         }
     } catch (error) {
         console.error(error);
@@ -95,72 +95,44 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
 });
 
 
-//The cart code starts here***************
-$(document).ready(function(){
+//The cart code starts here***************(BY ILLIA)
+$(document).ready(function () {
     //makes cart visible or not
-    $(".cart_image").click(function(){
+    $(".cart_image").click(function () {
         $(".cart_page_container").toggle();
     });
-    //adds items to the cart
-    let ordItemsCounter = 0;
 
-    $(".addItemButton").click(function() {
-        ordItemsCounter++;
+    function getNumber(){//counts the amount of block elements inside of cart
+        let ordItemsCounter = $(".cart_contents").find(".jsItemBlock").length;
+        $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
+        if(ordItemsCounter==0){//says if there are any items in the basket
+            $(".cart_contents h2").text("No items yet");
+        }
+        else{
+            $(".cart_contents h2").text("");
+        }
+    }
 
-        $(this).removeClass("addItemButton");
-        $(this).addClass("removeItemButton");
-        $(".cart_counter").text(ordItemsCounter);
-
-        // Change the src attribute of the image inside the clicked button
-        $(this).find("img").attr("src", "images/removeBasket.png");
-
-        var itemBlock = $(this).closest(".jsItemBlock");
-        var clonedItem = itemBlock.clone();
-        clonedItem.appendTo(".cart_page_container .cart .cart_contents");
-
-        // Add a click event listener to the remove button inside the cloned item block
-        clonedItem.find(".removeItemButton").click(function(){
-            // Remove the cloned item block from the cart container
+    $(".addItemButton").click(function () {
+        var itemBlock = $(this).closest(".jsItemBlock");//finds item block inside which button was pressed
+        var clonedItem = itemBlock.clone();//clones it
+        var buttonInClonedItem = clonedItem.find(".addItemButton")//finds the button inside of cloned element
+        buttonInClonedItem.removeClass("addItemButton");
+        buttonInClonedItem.addClass("removeItemButton");//changes the class of button to remove...
+        buttonInClonedItem.find("img").attr("src", "images/removeBasket.png");//changes image on the button
+        clonedItem.appendTo(".cart_page_container .cart .cart_contents");//appends cloned item to cart
+        getNumber();
+        
+         //prevents cloning of the same block multiple times
+        $(this).click(function () {
             clonedItem.remove();
-
-            // Decrease the order items counter
-            if(ordItemsCounter>0)
-                ordItemsCounter--;
-        $(".cart_counter").text(ordItemsCounter);
-
-            // Change the class of the remove button to add button
-            $(this).removeClass("removeItemButton");
-            $(this).addClass("addItemButton");
-            $(this).find("img").attr("src","images/addBasket.png");
+            getNumber();
         });
 
-        // Add a click event listener to the remove button in the product
-        $(this).click(function(){
-            // Remove the cloned item block from the cart container
+        //this removes item from the cart when remove button is clicked
+        clonedItem.find(".removeItemButton").click(function () {
             clonedItem.remove();
-
-            // Decrease the order items counter
-            if (ordItemsCounter > 0)
-                ordItemsCounter--;
-
-            $(".cart_counter").text(ordItemsCounter);
-
-            // Change the class of the remove button to add button
-            $(this).removeClass("removeItemButton").addClass("addItemButton");
-            $(this).find("img").attr("src","images/addBasket.png");
+            getNumber();
         });
     });
-
-    //remove items from cart
-    /*$(".removeItemButton").click(function() {
-        $(this).removeClass("removeItemButton");
-        $(this).addClass("addItemButton");
-        $(this).find("img").attr("src","images/addBasket.png");
-        // Decrease the order items counter
-            ordItemsCounter=0;
-        $(".cart_counter").text(ordItemsCounter);
-
-        var itemBlockInCart=$(".cart_contents").find(".jsItemBlock");
-        itemBlockInCart.remove();
-    });*/
 });

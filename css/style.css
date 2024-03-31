@@ -404,6 +404,15 @@ gap:10px;
     background: linear-gradient(to bottom left, rgb(144, 144, 246), rgb(234, 135, 151));
     transition:background-image .5s ease-in-out;
 }
+.addItemButton:focus{
+    margin-top:-100px;
+    padding-bottom:130px;
+    transition:.2s ease-in-out;
+    
+}
+.addItemButton:after{
+    transition:.5s ease-in-out;
+}
 .removeItemButton{/*THIS one is for when item is added*/
     padding: 0px;
     border: 0px solid gray;
@@ -449,7 +458,7 @@ row-gap:20px;
     border:4px solid black;
     border-radius:30px;
     margin-top:4rem;
-    background-color:#ffffff;
+    background-color:#efecf8;
     overflow-y: scroll;
 }
 .cart_contents h1{
@@ -459,5 +468,9 @@ row-gap:20px;
     .cart_page_container{
     margin-left:-100%;
     }
+}
+.cart_contents h2{
+    margin-left:42%;
+    width:200px;
 }
 /*/CART*/
