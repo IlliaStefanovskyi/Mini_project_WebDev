@@ -98,27 +98,37 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
 //The cart code starts here***************(BY ILLIA)
 $(document).ready(function () {
     //makes cart visible or not, disables scrolling when cart is opened
-    var cartOpen=false;
+    var cartOpen = false;
     $(".cart_image").click(function () {
         $(".cart_page_container").toggle();
         cartOpen = !cartOpen;//anti-false, so true
-        if(cartOpen==true){
+        if (cartOpen == true) {
             $("body").addClass("noScroll");
         }
-        else{
+        else {
             $("body").removeClass("noScroll");
         }
-    
     });
 
-    function getNumber(){//counts the amount of block elements inside of cart
+    function getNumber() {//counts the amount of block elements inside of cart, counts the sum of ordered items
         let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
         $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
-        if(ordItemsCounter==0){//says if there are any items in the basket
+        if (ordItemsCounter == 0) {//says if there are any items in the basket
             $(".orderItems h2").text("No items yet");
         }
-        else{
-            $(".orderItems h2").text("Ordered items");
+        else {//counts the sum of items ordered
+            var pricesArray = [];
+            let sum = 0;
+            $(".orderItems").find(".item_block_price").each(function () {//finds all the prices in ordered items
+                pricesArray.push($(this).text());//adds found price to an array
+            });
+            if (pricesArray.length > 0) {
+                for (let i = 0; i < pricesArray.length; i++) {//loops trough array
+                    pricesArray[i] = pricesArray[i].slice(1);//removes € sign
+                    sum += parseFloat(pricesArray[i]);//converts strings to doubles and adds them to the sum
+                }
+                $(".orderItems h2").text("Sum:" + sum);//prints the sum
+            }
         }
     }
 
@@ -131,8 +141,8 @@ $(document).ready(function () {
         buttonInClonedItem.find("img").attr("src", "images/removeBasket.png");//changes image on the button
         clonedItem.appendTo(".cart_page_container .cart .cart_contents .orderItems .orderItems1");//appends cloned item to cart
         getNumber();
-        
-         //prevents cloning of the same block multiple times
+
+        //prevents cloning of the same block multiple times
         $(this).click(function () {
             clonedItem.remove();
             getNumber();
