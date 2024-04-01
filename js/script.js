@@ -103,13 +103,13 @@ $(document).ready(function () {
     });
 
     function getNumber(){//counts the amount of block elements inside of cart
-        let ordItemsCounter = $(".cart_contents").find(".jsItemBlock").length;
+        let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
         $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
         if(ordItemsCounter==0){//says if there are any items in the basket
-            $(".cart_contents h2").text("No items yet");
+            $(".orderItems h2").text("No items yet");
         }
         else{
-            $(".cart_contents h2").text("");
+            $(".orderItems h2").text("Ordered items");
         }
     }
 
@@ -120,7 +120,7 @@ $(document).ready(function () {
         buttonInClonedItem.removeClass("addItemButton");
         buttonInClonedItem.addClass("removeItemButton");//changes the class of button to remove...
         buttonInClonedItem.find("img").attr("src", "images/removeBasket.png");//changes image on the button
-        clonedItem.appendTo(".cart_page_container .cart .cart_contents");//appends cloned item to cart
+        clonedItem.appendTo(".cart_page_container .cart .cart_contents .orderItems .orderItems1");//appends cloned item to cart
         getNumber();
         
          //prevents cloning of the same block multiple times
