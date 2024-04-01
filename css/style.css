@@ -456,6 +456,9 @@ row-gap:20px;
 ::-webkit-scrollbar-thumb:hover {
     background: #464545; 
 }
+.noScroll{/*disables scrolling when cart is opened*/
+    overflow:hidden;
+}
 /*/Scrollbar OVERALL*/
 
 /*CART it will be overlapping the page when displayed*/

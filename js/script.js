@@ -97,9 +97,18 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
 
 //The cart code starts here***************(BY ILLIA)
 $(document).ready(function () {
-    //makes cart visible or not
+    //makes cart visible or not, disables scrolling when cart is opened
+    var cartOpen=false;
     $(".cart_image").click(function () {
         $(".cart_page_container").toggle();
+        cartOpen = !cartOpen;//anti-false, so true
+        if(cartOpen==true){
+            $("body").addClass("noScroll");
+        }
+        else{
+            $("body").removeClass("noScroll");
+        }
+    
     });
 
     function getNumber(){//counts the amount of block elements inside of cart
