@@ -139,6 +139,23 @@ $(document).ready(function () {
         }
     });
 
+    //this one adjusts the cart when the screen size is small
+    var position=false;//true is details, false is products
+    $(".switchImage").click(function(){
+        position=!position;
+        if(position){//is true
+        $(".orderItems").css("display", "none");//hides items
+        $(".orderDetails").css("display","flex");//displays details
+        $(".orderDetails").css("margin-top","10px");
+        $(".orderDetails").css("grid-column","1 /span2");
+        }
+        else{
+            $(".orderDetails").css("display","none");//hides details
+            $(".orderItems").css("display", "block");//displays items
+        }
+
+    });
+
     function getNumber() {//counts the amount of block elements inside of cart, counts the sum of ordered items
         let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
         $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
