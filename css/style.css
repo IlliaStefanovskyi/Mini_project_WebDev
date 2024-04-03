@@ -299,7 +299,7 @@ display:grid;
 grid-template:305px 305px/200px 200px 200px 200px;
 gap:10px;
 }
-@media(max-width:1200px){
+@media(max-width:1250px){
     .grid_discounted{
         grid-template:305px 305px 305px 305px/200px 200px;
         }
@@ -427,6 +427,9 @@ gap:10px;
     margin-top: -12px;
     transition:.5s ease-in-out;
     background-color:antiquewhite;
+}
+.hiddenInfo{
+    display:none;
 }
 /*//Item block OVERALL*/
 /*GRID on products*/
@@ -646,6 +649,72 @@ li:hover{
 /*/ORDER DETAILS*/
 /*/CART*/
 
+/*description*/
+.descriptionContainer{
+    display:none;
+    position:fixed;
+}
+.description{
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    position:fixed;
+    background-color:#1e1e1e6d;
+    height:130%;
+    width:100%;
+    z-index: 5;
+}
+.descriptionContents{
+    width:95%;
+    height:fit-content;
+    border:4px solid black;
+    border-radius:30px;
+    margin-top:4rem;
+    background-color:#efecf8;
+    overflow:hidden;
+}
+.closeDescription{
+    margin-top:10px;
+    margin-left:95%;
+}
+.itemImageInDescription{
+    margin-left:30px;
+    margin-top:-25px;
+}
+.imageNameDesc{
+    display:flex;
+    flex-direction:row;
+    gap:1rem;
+}
+.headersDescription{
+    margin:1rem;
+}
+@media(max-width:600px) {
+    .closeDescription{
+        margin-top:10px;
+        margin-left:80%;
+    }
+    .itemImageInDescription{
+        margin:2rem;
+    }
+    .imageNameDesc {
+        flex-direction: column;
+        margin-left: 5%;
+        margin-right:5%;
+    }
+    .descriptionContents{
+        overflow-y: scroll;
+        max-height: 65%;
+    }
+}
+
+@media(max-width:800px) {
+    .descriptionContainer {
+        margin-left: -100%;
+    }
+}
+
+/*//description*/
 /*products page*/
 .productsLayout{
     display:flex;

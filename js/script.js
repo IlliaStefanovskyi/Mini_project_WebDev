@@ -67,12 +67,21 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
             console.log(result);
             console.log(result1);
             let description = document.querySelectorAll(".item_block_text");//gets elements to change
+            let servingsH = document.querySelectorAll(".servingsH");//H means hidden
+            let ingredientsH = document.querySelectorAll(".ingredientsH");
+            let descriptionH = document.querySelectorAll(".descriptionH");
             for (let i = 0; i < (result.length+result1.length); i++) {
                 if(i<result.length){
-                    description[i].innerHTML = result[i].title;//assigns new contents to the elements 
+                    description[i].innerHTML = result[i].title;//assigns new contents to the elements in description
+                    servingsH[i].innerHTML = result[i].servings;
+                    ingredientsH[i].innerHTML = result[i].ingredients;
+                    descriptionH[i].innerHTML = result[i].instructions;
                 }
-                else{
+                else{//required for the second request
                     description[i].innerHTML = result1[i-10].title;
+                    servingsH[i].innerHTML = result1[i-10].servings;
+                    ingredientsH[i].innerHTML = result1[i-10].ingredients;
+                    descriptionH[i].innerHTML = result1[i-10].instructions;
                 }
             }
         } catch (error) {
@@ -173,5 +182,50 @@ $(document).ready(function () {
             clonedItem.remove();
             getNumber();
         });
+    });
+
+    //description block***********************************
+
+    $(".item_button").click(function () {
+
+        $(".descriptionContainer").toggle();//makes description visible
+        var itemBlock = $(this).closest(".jsItemBlock");//gets item block
+
+        var image = itemBlock.find(".images_prod_main");//finds image in item block
+        var imageDescription = $(".itemImageInDescription");//finds image space in description
+        imageDescription.attr("src", image.attr("src"));//changes image in description
+
+        var value = itemBlock.find(".item_block_text").text();//finds title
+        var nameDescription = $(".itemName");//finds it in description
+        nameDescription.text(value);//pastes it
+
+        value = itemBlock.find(".servingsH").text();//gets number of servings
+        var servesDesc = $(".servings");
+        servesDesc.text(value);
+
+        value = itemBlock.find(".ingredientsH").text();//gets ingredients
+        var ingredientsDesc = $(".ingredients");
+        ingredientsDesc.text(value);
+
+        value = itemBlock.find(".descriptionH").text();//gets desciption
+        var descriptionDesc = $(".descriptionItemText");
+        descriptionDesc.text(value);
+        
+    });
+
+    var descriptionOpen = false;
+    $(".item_button").click(function () {//disables scrolling when description is opened
+        descriptionOpen= !descriptionOpen;//anti-false, so true
+        if (descriptionOpen == true) {
+            $("body").addClass("noScroll");//overflow:hidden
+        }
+    });
+    $(".closeDescription").click(function(){//returns scrolling when window is closed
+        $("body").removeClass("noScroll");
+        descriptionOpen = false;
+    });
+
+    $(".closeDescription").click(function () {//close the description window
+        $(".descriptionContainer").toggle();
     });
 });
