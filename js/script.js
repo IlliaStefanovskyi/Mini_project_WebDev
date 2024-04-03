@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
     } catch (error) {
         console.error(error);
     }*/
-    /*PIZZA unblock for presentation only LIMIT 1500 PER MONTH
+    /*//PIZZA unblock for presentation only LIMIT 1500 PER MONTH
         const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=0';
         const url2= 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=10';
         const options = {
@@ -60,12 +60,20 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         };
         
         try {
-            const response = await fetch(url, options);
-            const result = await response.json();
+            const response = await fetch(url, options);//one request returns 10 items, but we need 20
+            const response1=await fetch(url2,options);//so we make 2 requests at the time and the second one has offset of 10
+            const result = await response.json();//each response is 
+            const result1=await response1.json();
             console.log(result);
+            console.log(result1);
             let description = document.querySelectorAll(".item_block_text");//gets elements to change
-            for (let i = 0; i < 10; i++) {
-                description[i].innerHTML = result[i].title;//assigns new contents to the elements 
+            for (let i = 0; i < (result.length+result1.length); i++) {
+                if(i<result.length){
+                    description[i].innerHTML = result[i].title;//assigns new contents to the elements 
+                }
+                else{
+                    description[i].innerHTML = result1[i-10].title;
+                }
             }
         } catch (error) {
             console.error(error);
@@ -86,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
         const result = await response.json();//translates to json
         console.log(result);
         let image_spaces = document.querySelectorAll(".images_prod_main");//gets image spaces from html
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < result.results.length; i++) {
             image_spaces[i].src = result.results[i].image;//changes the default images to the ones in API response
         }
     } catch (error) {
@@ -97,6 +105,18 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
 
 //The cart code starts here***************(BY ILLIA)
 $(document).ready(function () {
+
+    //products page************(by Khalid)
+    var block=$(".productsLayout").find(".productsBlock");
+    for(let i=0;i<19;i++){
+        var clonedBlock=block.clone()
+        let randomPrice=(Math.random()*(30-10)+10).toFixed(2);
+        var priceBlock=clonedBlock.find(".item_block_price");
+        priceBlock.text("€"+randomPrice);
+        clonedBlock.appendTo(".productsLayout");
+    }
+    //*************
+
     //makes cart visible or not, disables scrolling when cart is opened
     var cartOpen = false;
     $(".cart_image").click(function () {
@@ -127,7 +147,7 @@ $(document).ready(function () {
                     pricesArray[i] = pricesArray[i].slice(1);//removes € sign
                     sum += parseFloat(pricesArray[i]);//converts strings to doubles and adds them to the sum
                 }
-                $(".orderItems h2").text("Sum:" + sum);//prints the sum
+                $(".orderItems h2").text("Sum:" + sum.toFixed(2));//prints the sum
             }
         }
     }
