@@ -33,12 +33,13 @@
             <div class="cart_page_container">
                 <div class="cart">
                     <div class="cart_contents">
-                        <h1>Cart</h1>
+                        <div class="h1Cart">
+                            <h1>Cart</h1>
+                            <img class="switchImage" src="images/switch.png" height="40px">
+                        </div>
                         <div class="orderItems">
                             <h2>No items yet</h2>
-                            <div class="orderItems1">
-    
-                            </div>
+                            <div class="orderItems1"></div>
                         </div>
                         <div class="orderDetails">
                             <div class="main_box">
@@ -50,11 +51,13 @@
                                     <div class="block_usability_change">
                                         <div class="usability_change">
                                             <p>Email:</p>
-                                            <input type="email" name="email" size="20rem" placeholder="...@email.com" required autofocus>
+                                            <input type="email" name="email" size="20rem" placeholder="...@email.com"
+                                                required autofocus>
                                         </div>
                                         <div class="usability_change">
                                             <p>Phone number:</p>
-                                            <input type="phone" name="phone" placeholder="087111222333" required autofocus>
+                                            <input type="phone" name="phone" placeholder="087111222333" required
+                                                autofocus>
                                         </div>
                                     </div>
                                     <div id="time">
@@ -67,36 +70,40 @@
                                             <div>
                                                 <label>at</label>
                                                 <input type="time" name="time" required autofocus>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="querry_reason">
+                                        <div class="querry_reason">
+                                            <div>
+                                                <p>Write your preferences here</p>
+                                                <textarea rows="10" cols="43"></textarea>
+                                            </div>
+                                            <div>
+                                                <p>Takeaway or in place?</p>
+                                                <select id="reason" required autofocus>
+                                                    <option value="select">select</option>
+                                                    <option value="takeaway">Takeaway</option>
+                                                    <option value="in_place">In place</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div>
-                                            <p>Write your preferences here</p>
-                                            <textarea rows="10" cols="43"></textarea>
+                                            <input type="checkbox" value="accept_terms" name="accept" required
+                                                autofocus>
+                                            <label>I accept the <a href="..." class="terms_conds">terms and
+                                                    conditions</a> of customer service.</label>
                                         </div>
-                                        <div>
-                                            <p>Takeaway or in place?</p>
-                                            <select id="reason" required autofocus>
-                                                <option value="select">select</option>
-                                                <option value="takeaway">Takeaway</option>
-                                                <option value="in_place">In place</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div>
-                                    <input type="checkbox" value="accept_terms" name="accept" required autofocus>
-                                    <label>I accept the <a href="..." class="terms_conds">terms and conditions</a> of customer service.</label>
-                                    </div>
-                                    <br>
-                                    <button type="submit" name="send" id="send" class="send" value="send">Send order</button>
-                                    <button type="reset" name="reset" id="reset" class="reset" value="reset">Reset</button>
+                                        <br>
+                                        <button type="submit" name="send" id="send" class="send" value="send">Send
+                                            order</button>
+                                        <button type="reset" name="reset" id="reset" class="reset"
+                                            value="reset">Reset</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         
         </div>
     </header>

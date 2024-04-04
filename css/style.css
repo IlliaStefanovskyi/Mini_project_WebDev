@@ -431,6 +431,14 @@ gap:10px;
 .hiddenInfo{
     display:none;
 }
+.hiddenNumberInput{
+    height:20px;
+    width:35px;
+    color:#040316;
+    display:none;
+    padding-top: 0px;
+    margin-top:-8px;
+}
 /*//Item block OVERALL*/
 /*GRID on products*/
 #grd_prod{

@@ -113,7 +113,33 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
 
 
 //The cart code starts here***************(BY ILLIA)
-$(document).ready(function () {
+
+function getNumber() {//counts the amount of block elements inside of cart, counts the sum of ordered items
+    let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
+    $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
+    if (ordItemsCounter == 0) {//says if there are any items in the basket
+        $(".orderItems h2").text("No items yet");
+    }
+    else { // Counts the sum of items ordered
+        var pricesArray = [];
+        var amountArray = [];
+        let sum = 0;
+        $(".orderItems").find(".item_block_price").each(function () { // Finds all the prices in ordered items
+            pricesArray.push(parseFloat($(this).text().slice(1))); // Adds found price to an array
+        });
+        $(".orderItems").find(".hiddenNumberInput").each(function () {
+            amountArray.push(parseFloat($(this).val())); // Retrieves quantity value and adds it to an array
+        });
+        if (pricesArray.length > 0) {
+            for (let i = 0; i < pricesArray.length; i++) { // Loops through arrays
+                sum += (pricesArray[i] * amountArray[i]); // Calculates subtotal for each item and adds to sum
+            }
+            $(".orderItems h2").text("Sum: €" + sum.toFixed(2)); // Prints the sum
+        }
+    }
+}
+
+$(document).ready(function () {//all functions inside of it will run only after the document is loaded
 
     //products page************(by Khalid)
     var block=$(".productsLayout").find(".productsBlock");
@@ -133,6 +159,9 @@ $(document).ready(function () {
         cartOpen = !cartOpen;//anti-false, so true
         if (cartOpen == true) {
             $("body").addClass("noScroll");
+            $('.hiddenNumberInput').on('input', function() {
+                getNumber();
+            });
         }
         else {
             $("body").removeClass("noScroll");
@@ -156,28 +185,6 @@ $(document).ready(function () {
 
     });
 
-    function getNumber() {//counts the amount of block elements inside of cart, counts the sum of ordered items
-        let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
-        $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
-        if (ordItemsCounter == 0) {//says if there are any items in the basket
-            $(".orderItems h2").text("No items yet");
-        }
-        else {//counts the sum of items ordered
-            var pricesArray = [];
-            let sum = 0;
-            $(".orderItems").find(".item_block_price").each(function () {//finds all the prices in ordered items
-                pricesArray.push($(this).text());//adds found price to an array
-            });
-            if (pricesArray.length > 0) {
-                for (let i = 0; i < pricesArray.length; i++) {//loops trough array
-                    pricesArray[i] = pricesArray[i].slice(1);//removes € sign
-                    sum += parseFloat(pricesArray[i]);//converts strings to doubles and adds them to the sum
-                }
-                $(".orderItems h2").text("Sum:" + sum.toFixed(2));//prints the sum
-            }
-        }
-    }
-
     $(".addItemButton").click(function () {
         var itemBlock = $(this).closest(".jsItemBlock");//finds item block inside which button was pressed
         var clonedItem = itemBlock.clone();//clones it
@@ -185,6 +192,12 @@ $(document).ready(function () {
         buttonInClonedItem.removeClass("addItemButton");
         buttonInClonedItem.addClass("removeItemButton");//changes the class of button to remove...
         buttonInClonedItem.find("img").attr("src", "images/removeBasket.png");//changes image on the button
+
+        var viewButton = clonedItem.find(".item_button");
+        var amountCounter = clonedItem.find(".hiddenNumberInput");
+        viewButton.css("display","none");//hides the view button
+        amountCounter.css("display","block");//displays amount input
+
         clonedItem.appendTo(".cart_page_container .cart .cart_contents .orderItems .orderItems1");//appends cloned item to cart
         getNumber();
 
