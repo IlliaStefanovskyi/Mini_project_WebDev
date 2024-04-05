@@ -26,6 +26,10 @@ a:hover{
 
 
 /*header OVERALL                               (BY ILLIA)*/
+.miniDropdown{
+    display:flex;
+    flex-direction: column;
+}
 .burgerBar{
     padding:0.7rem;
     display:none;
@@ -101,6 +105,11 @@ height:3rem;
     background-color:#ff8300;
     padding:0.9rem;
     color:#040316;
+    height:1.2rem;
+}
+.dropMiniItem{
+    background-color:#4a4a4a;
+    border-top:1px solid gray;
 }
 .hilight_nav:hover{
     background-color:#ff8300;
