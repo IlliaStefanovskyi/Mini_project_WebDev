@@ -151,7 +151,16 @@ $(document).ready(function () {//all functions inside of it will run only after 
         clonedBlock.appendTo(".productsLayout");
     }
     //*************
-
+    var menuVisible=false;
+    $(".burgerBar").click(function(){
+        menuVisible=!menuVisible;
+        if(menuVisible){
+            $(".htmlPages").css("display","flex");
+        }
+        else{
+            $(".htmlPages").css("display","none");
+        }
+    });
     //makes cart visible or not, disables scrolling when cart is opened
     var cartOpen = false;
     $(".cart_image").click(function () {
