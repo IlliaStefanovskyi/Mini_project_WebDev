@@ -92,20 +92,19 @@
                         <div class="orderDetails">
                             <div class="main_box">
                                 <h2>Enter order details here</h2>
-                                <form action="Submission.html" method="get">
+                                <form onsubmit="submitOrder()" method="get">
                                     <p>Your name: </p>
                                     <input type="name" name="name" maxlength="30" size="20rem" required autofocus>
                                     <br>
                                     <div class="block_usability_change">
                                         <div class="usability_change">
                                             <p>Email:</p>
-                                            <input type="email" name="email" size="20rem" placeholder="...@email.com"
-                                                required autofocus>
+                                            <input class="email" type="email" name="email" size="20rem" placeholder="...@email.com" required autofocus>
+                                            <label class="wrongEmail"></label>
                                         </div>
                                         <div class="usability_change">
                                             <p>Phone number:</p>
-                                            <input type="phone" name="phone" placeholder="087111222333" required
-                                                autofocus>
+                                            <input type="phone" name="phone" placeholder="087111222333" required autofocus>
                                         </div>
                                     </div>
                                     <div id="time">
@@ -135,20 +134,17 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <input type="checkbox" value="accept_terms" name="accept" required
-                                                autofocus>
+                                            <input type="checkbox" value="accept_terms" name="accept" required autofocus>
                                             <label>I accept the <a href="..." class="terms_conds">terms and
                                                     conditions</a> of customer service.</label>
                                         </div>
                                         <br>
-                                        <button type="submit" name="send" id="send" class="send" value="send">Send
-                                            order</button>
-                                        <button type="reset" name="reset" id="reset" class="reset"
-                                            value="reset">Reset</button>
+                                        <button type="submit" class="send">Send order</button>
+                                        <button type="reset" class="reset">Reset</button>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
+                                </div>
+                                </div>
+                                </div>
                 </div>
             </div>
 

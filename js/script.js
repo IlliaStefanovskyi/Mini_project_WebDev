@@ -138,6 +138,26 @@ function getNumber() {//counts the amount of block elements inside of cart, coun
         }
     }
 }
+function submitOrder() {//submits order form 
+    let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
+    
+    if (ordItemsCounter > 0) {
+        window.alert("Order submitted!");
+    } else {
+        window.alert("No items in the basket.");
+        return; //exit the function if there are no items in the basket
+    }
+    
+    //email input validation
+    var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;//checks for dots,@ and spaces
+    var inputEmail = $(".email").val(); //get the value of the email
+    var result = pattern.test(inputEmail); //test the email
+
+    if (!result) {//if email is invalid
+        window.alert("Invalid Email!");
+        return;//exit the function
+    }
+}
 
 $(document).ready(function () {//all functions inside of it will run only after the document is loaded
 
