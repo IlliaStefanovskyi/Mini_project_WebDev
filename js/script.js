@@ -151,14 +151,28 @@ $(document).ready(function () {//all functions inside of it will run only after 
         clonedBlock.appendTo(".productsLayout");
     }
     //*************
-    var menuVisible=false;
-    $(".burgerBar").click(function(){
-        menuVisible=!menuVisible;
-        if(menuVisible){
-            $(".htmlPages").css("display","flex");
+
+    //dropdown on products
+    var dropdownVisible=false;
+    $(".activator").click(function(){
+        dropdownVisible=!dropdownVisible;
+        if(dropdownVisible){
+            $(".dropMiniItem").css("display","block");
         }
         else{
-            $(".htmlPages").css("display","none");
+            $(".dropMiniItem").css("display","none");
+        }
+    });
+
+    //this one is for burger bar
+    var menuVisible=false;//by default
+    $(".burgerBar").click(function(){
+        menuVisible=!menuVisible;//anti-false
+        if(menuVisible){//if true
+            $(".htmlPages").css("display","flex");//display
+        }
+        else{
+            $(".htmlPages").css("display","none");//hide
         }
     });
     //makes cart visible or not, disables scrolling when cart is opened

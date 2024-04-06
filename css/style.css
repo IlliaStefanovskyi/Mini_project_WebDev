@@ -26,9 +26,14 @@ a:hover{
 
 
 /*header OVERALL                               (BY ILLIA)*/
+.dropMiniItem{
+    width:4.5rem;
+    display: none;
+}
 .miniDropdown{
     display:flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
 .burgerBar{
     padding:0.7rem;
@@ -36,7 +41,7 @@ a:hover{
     z-index: 6;
 }
 .burgerBar:active{
-    background-color:#00bfc5;
+    transition:background-image .5s ease-in-out;
 }
 .pagesBlock{
     width:100%;
@@ -49,9 +54,8 @@ a:hover{
     display:flex;
     flex-direction:row;
 }
-.nav_header:nth-child(3){
-    margin-right:1.5rem;
-    margin-left:-.5rem
+.contactUs{
+    margin-right:2rem;
 }
 .cart_container{
     text-align:center;
