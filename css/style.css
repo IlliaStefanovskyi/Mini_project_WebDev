@@ -742,6 +742,19 @@ li:hover{
 .terms_conds:hover{
     color:rgb(56, 109, 223);
 }
+.addressDetails{
+    margin-bottom:3rem;
+    display:none;
+}
+p .alert{
+    color:red;
+}
+button:disabled{
+    background-color: #9a9595;
+}
+button:disabled:hover{
+    background-color: #9a9595;
+}
 /*/ORDER DETAILS*/
 /*/CART*/
 

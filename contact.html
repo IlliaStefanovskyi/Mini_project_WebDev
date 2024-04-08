@@ -54,20 +54,19 @@
                         <div class="orderDetails">
                             <div class="main_box">
                                 <h2>Enter order details here</h2>
-                                <form action="Submission.html" method="get">
+                                <form onsubmit="submitOrder()" method="get">
                                     <p>Your name: </p>
                                     <input type="name" name="name" maxlength="30" size="20rem" required autofocus>
                                     <br>
                                     <div class="block_usability_change">
                                         <div class="usability_change">
                                             <p>Email:</p>
-                                            <input type="email" name="email" size="20rem" placeholder="...@email.com"
-                                                required autofocus>
+                                            <input class="email" type="email" name="email" size="20rem" placeholder="...@email.com" required autofocus>
+                                            <label class="wrongEmail"></label>
                                         </div>
                                         <div class="usability_change">
                                             <p>Phone number:</p>
-                                            <input type="phone" name="phone" placeholder="087111222333" required
-                                                autofocus>
+                                            <input type="phone" name="phone" placeholder="087111222333" required autofocus>
                                         </div>
                                     </div>
                                     <div id="time">
@@ -89,31 +88,41 @@
                                             </div>
                                             <div>
                                                 <p>Takeaway or in place?</p>
-                                                <select id="reason" required autofocus>
+                                                <select class="choiceDelivery" required autofocus>
                                                     <option value="select">select</option>
-                                                    <option value="takeaway">Takeaway</option>
+                                                    <option value="delivery">Delivery</option>
                                                     <option value="in_place">In place</option>
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="addressDetails">
+                                            <h4>Enter your delivery address details here</h4>
+                                            <p>Address line 1</p>
+                                            <input type="text" class="addressl1" placeholder="line1" autofocus required>
+                                            <p>Address line 2</p>
+                                            <input type="text" class="addressl2" placeholder="line2">
+                                            <p>Address line 3</p>
+                                            <input type="text" class="addressl3" placeholder="line3">
+                                            <p>City/area</p>
+                                            <input type="text" class="addressCity" placeholder="City/area" autofocus required>
+                                            <p>Eircode</p>
+                                            <input type="text" class="addressCode" placeholder="Eircode" autofocus required>
+                                        </div>
                                         <div>
-                                            <input type="checkbox" value="accept_terms" name="accept" required
-                                                autofocus>
-                                            <label>I accept the <a href="..." class="terms_conds">terms and
+                                            <input type="checkbox" required autofocus>
+                                            <label>I accept the <a href="https://en.wikipedia.org/wiki/Terms_of_service" class="terms_conds" target="_blank">terms and
                                                     conditions</a> of customer service.</label>
                                         </div>
                                         <br>
-                                        <button type="submit" name="send" id="send" class="send" value="send">Send
-                                            order</button>
-                                        <button type="reset" name="reset" id="reset" class="reset"
-                                            value="reset">Reset</button>
+                                        <p class="alert"></p>
+                                        <button type="submit" class="send">Send order</button>
+                                        <button type="reset" class="reset">Reset</button>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
+                                </div>
+                                </div>
+                                </div>
                 </div>
             </div>
-
         
         </div>
     </header>

@@ -18,18 +18,18 @@
     </head>
 
 <body>
-    <header class="header_all">
+    <header>
         <nav>
             <img class="burgerBar" src="images/burgerBar.webp" alt="see menu" height="25rem">
             <div class="pagesBlock">
                 <div class="htmlPages">
                     <a class="nav_header" href="index.html">Home</a>
                     <div class="miniDropdown">
-                    <a class="nav_header activator hilight_nav">Products ↧</a>
+                    <a class="nav_header activator">Products ↧</a>
                     <a class="nav_header dropMiniItem" href="products.html">Products</a>
                     <a class="nav_header dropMiniItem" href="slideshow.html">Slideshow</a>
                     </div>
-                    <a class="nav_header contactUs" href="contact.html">Contact Us</a>
+                    <a class="nav_header contactUs hilight_nav" href="contact.html">Contact Us</a>
                 </div>
                 <div></div>
                 <div class="cart_container">
@@ -38,6 +38,93 @@
                 </div>
             </div>
         </nav>
+        <div class="header_container">
+
+            <div class="cart_page_container">
+                <div class="cart">
+                    <div class="cart_contents">
+                        <div class="h1Cart">
+                            <h1>Cart</h1>
+                            <img class="switchImage" src="images/switch.png" height="40px">
+                        </div>
+                        <div class="orderItems">
+                            <h2>No items yet</h2>
+                            <div class="orderItems1"></div>
+                        </div>
+                        <div class="orderDetails">
+                            <div class="main_box">
+                                <h2>Enter order details here</h2>
+                                <form onsubmit="submitOrder()" method="get">
+                                    <p>Your name: </p>
+                                    <input type="name" name="name" maxlength="30" size="20rem" required autofocus>
+                                    <br>
+                                    <div class="block_usability_change">
+                                        <div class="usability_change">
+                                            <p>Email:</p>
+                                            <input class="email" type="email" name="email" size="20rem" placeholder="...@email.com" required autofocus>
+                                            <label class="wrongEmail"></label>
+                                        </div>
+                                        <div class="usability_change">
+                                            <p>Phone number:</p>
+                                            <input type="phone" name="phone" placeholder="087111222333" required autofocus>
+                                        </div>
+                                    </div>
+                                    <div id="time">
+                                        <p>Choose the time when you want to pick up the order.</p>
+                                        <div class="time_flex">
+                                            <div>
+                                                <label>On</label>
+                                                <input type="date" name="date" required autofocus>
+                                            </div>
+                                            <div>
+                                                <label>at</label>
+                                                <input type="time" name="time" required autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="querry_reason">
+                                            <div>
+                                                <p>Write your preferences here</p>
+                                                <textarea rows="10" cols="43"></textarea>
+                                            </div>
+                                            <div>
+                                                <p>Takeaway or in place?</p>
+                                                <select class="choiceDelivery" required autofocus>
+                                                    <option value="select">select</option>
+                                                    <option value="delivery">Delivery</option>
+                                                    <option value="in_place">In place</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="addressDetails">
+                                            <h4>Enter your delivery address details here</h4>
+                                            <p>Address line 1</p>
+                                            <input type="text" class="addressl1" placeholder="line1" autofocus required>
+                                            <p>Address line 2</p>
+                                            <input type="text" class="addressl2" placeholder="line2">
+                                            <p>Address line 3</p>
+                                            <input type="text" class="addressl3" placeholder="line3">
+                                            <p>City/area</p>
+                                            <input type="text" class="addressCity" placeholder="City/area" autofocus required>
+                                            <p>Eircode</p>
+                                            <input type="text" class="addressCode" placeholder="Eircode" autofocus required>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" required autofocus>
+                                            <label>I accept the <a href="https://en.wikipedia.org/wiki/Terms_of_service" class="terms_conds" target="_blank">terms and
+                                                    conditions</a> of customer service.</label>
+                                        </div>
+                                        <br>
+                                        <p class="alert"></p>
+                                        <button type="submit" class="send">Send order</button>
+                                        <button type="reset" class="reset">Reset</button>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                </div>
+            </div>
+        
+        </div>
     </header>
     <main></main>
     <footer>

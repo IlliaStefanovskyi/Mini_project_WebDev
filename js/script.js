@@ -119,8 +119,11 @@ function getNumber() {//counts the amount of block elements inside of cart, coun
     $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
     if (ordItemsCounter == 0) {//says if there are any items in the basket
         $(".orderItems h2").text("No items yet");
+        $(".alert").text("Add items to basket");
+        $(".send").prop("disabled", true);//button disabled
     }
     else { // Counts the sum of items ordered
+        $(".send").prop("disabled", false);//button enabled
         var pricesArray = [];
         var amountArray = [];
         let sum = 0;
@@ -139,14 +142,9 @@ function getNumber() {//counts the amount of block elements inside of cart, coun
     }
 }
 function submitOrder() {//submits order form 
-    let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
+    let sum= $(".orderItems h2").text();//gets the sum
     
-    if (ordItemsCounter > 0) {
-        window.alert("Order submitted!");
-    } else {
-        window.alert("No items in the basket.");
-        return; //exit the function if there are no items in the basket
-    }
+    window.alert("Order submitted! "+sum);//displays order details
     
     //email input validation
     var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;//checks for dots,@ and spaces
@@ -154,12 +152,35 @@ function submitOrder() {//submits order form
     var result = pattern.test(inputEmail); //test the email
 
     if (!result) {//if email is invalid
-        window.alert("Invalid Email!");
-        return;//exit the function
+        $(".alert").text("Invalid email");//changes alert element contents
+        return;//stops the function from proceeding
+    }
+}
+function deliveryAddress(){
+    var choiceDelivery = $(".choiceDelivery").val();//receives the value
+    if(choiceDelivery == "select"){//if type not chosen
+        $(".alert").text("Choose the delivery type!");//error message
+        $(".send").prop("disabled", true);//button disabled
+    }
+    else if(choiceDelivery == "delivery"){//if type is delivery
+        $(".alert").text("");//removes error message
+        $(".addressDetails").css("display","block");//displays address
+        $(".send").prop("disabled", false);//button is active
+    }
+    else{//if type is eat in place
+        $(".alert").text("");//removes error message
+        $(".addressDetails").css("display","none");//hides address
+        $(".send").prop("disabled", false);//button is active
+        //enables submission by removing required property from address
+        $(".addressl1").prop("required", false);
+        $(".addressCity").prop("required", false);
+        $(".addressCode").prop("required", false);
     }
 }
 
 $(document).ready(function () {//all functions inside of it will run only after the document is loaded
+    deliveryAddress();//disables send button untill delivery type is entered
+    $(".choiceDelivery").on("change", deliveryAddress);//calls for delivery input function once value of select was changed
 
     //products page************(by Khalid)
     var block=$(".productsLayout").find(".productsBlock");
@@ -176,15 +197,15 @@ $(document).ready(function () {//all functions inside of it will run only after 
     var dropdownVisible=false;
     $(".activator").click(function(){
         dropdownVisible=!dropdownVisible;
-        if(dropdownVisible){
+        if(dropdownVisible){//is true
             $(".dropMiniItem").css("display","block");
         }
-        else{
+        else{//is false
             $(".dropMiniItem").css("display","none");
         }
     });
 
-    //this one is for burger bar
+    // for burger bar
     var menuVisible=false;//by default
     $(".burgerBar").click(function(){
         menuVisible=!menuVisible;//anti-false
@@ -201,13 +222,13 @@ $(document).ready(function () {//all functions inside of it will run only after 
         $(".cart_page_container").toggle();
         cartOpen = !cartOpen;//anti-false, so true
         if (cartOpen == true) {
-            $("body").addClass("noScroll");
-            $('.hiddenNumberInput').on('input', function() {
+            $("body").addClass("noScroll");//disables scrolling
+            $('.hiddenNumberInput').on('input', function() {//this is for sum counter
                 getNumber();
             });
         }
         else {
-            $("body").removeClass("noScroll");
+            $("body").removeClass("noScroll");//enables scrolling
         }
     });
 

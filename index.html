@@ -126,19 +126,33 @@
                                             </div>
                                             <div>
                                                 <p>Takeaway or in place?</p>
-                                                <select id="reason" required autofocus>
+                                                <select class="choiceDelivery" required autofocus>
                                                     <option value="select">select</option>
-                                                    <option value="takeaway">Takeaway</option>
+                                                    <option value="delivery">Delivery</option>
                                                     <option value="in_place">In place</option>
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="addressDetails">
+                                            <h4>Enter your delivery address details here</h4>
+                                            <p>Address line 1</p>
+                                            <input type="text" class="addressl1" placeholder="line1" autofocus required>
+                                            <p>Address line 2</p>
+                                            <input type="text" class="addressl2" placeholder="line2">
+                                            <p>Address line 3</p>
+                                            <input type="text" class="addressl3" placeholder="line3">
+                                            <p>City/area</p>
+                                            <input type="text" class="addressCity" placeholder="City/area" autofocus required>
+                                            <p>Eircode</p>
+                                            <input type="text" class="addressCode" placeholder="Eircode" autofocus required>
+                                        </div>
                                         <div>
-                                            <input type="checkbox" value="accept_terms" name="accept" required autofocus>
-                                            <label>I accept the <a href="..." class="terms_conds">terms and
+                                            <input type="checkbox" required autofocus>
+                                            <label>I accept the <a href="https://en.wikipedia.org/wiki/Terms_of_service" class="terms_conds" target="_blank">terms and
                                                     conditions</a> of customer service.</label>
                                         </div>
                                         <br>
+                                        <p class="alert"></p>
                                         <button type="submit" class="send">Send order</button>
                                         <button type="reset" class="reset">Reset</button>
                                 </form>
