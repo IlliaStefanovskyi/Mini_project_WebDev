@@ -141,6 +141,19 @@ function getNumber() {//counts the amount of block elements inside of cart, coun
         }
     }
 }
+
+function copyCart(){//copies or updates the copy of the cart whenever needed
+    var orderItemsHTML = document.querySelector(".orderItems1").outerHTML;//gets html of cart element
+    sessionStorage.setItem("copiedOrderItems", orderItemsHTML);//adds it to session storage
+}
+function pasteCart(){
+    var copiedOrderItemsHTML = sessionStorage.getItem("copiedOrderItems");//gets item from session storage
+    if (copiedOrderItemsHTML) {//if it exists
+        //replace the existing div with the copied one
+        document.querySelector(".orderItems1").outerHTML = copiedOrderItemsHTML;//replaces old one with copied one
+    }
+}
+
 function submitOrder() {//submits order form 
     let sum= $(".orderItems h2").text();//gets the sum
     
@@ -179,6 +192,8 @@ function deliveryAddress(){
 }
 
 $(document).ready(function () {//all functions inside of it will run only after the document is loaded
+    pasteCart();//pastes cart from memory if there is one
+    getNumber();//updates the price and counter
     deliveryAddress();//disables send button untill delivery type is entered
     $(".choiceDelivery").on("change", deliveryAddress);//calls for delivery input function once value of select was changed
 
@@ -221,10 +236,11 @@ $(document).ready(function () {//all functions inside of it will run only after 
     $(".cart_image").click(function () {
         $(".cart_page_container").toggle();
         cartOpen = !cartOpen;//anti-false, so true
-        if (cartOpen == true) {
+        if (cartOpen == true) {//when cart opens
             $("body").addClass("noScroll");//disables scrolling
             $('.hiddenNumberInput').on('input', function() {//this is for sum counter
                 getNumber();
+                copyCart();//updates cart in memory
             });
         }
         else {
@@ -257,6 +273,9 @@ $(document).ready(function () {//all functions inside of it will run only after 
         buttonInClonedItem.addClass("removeItemButton");//changes the class of button to remove...
         buttonInClonedItem.find("img").attr("src", "images/removeBasket.png");//changes image on the button
 
+        var imageInClonedItem=clonedItem.find(".images_prod_main");//**********does not work:( */
+        imageInClonedItem.removeClass(".images_prod_main");
+
         var viewButton = clonedItem.find(".item_button");
         var amountCounter = clonedItem.find(".hiddenNumberInput");
         viewButton.css("display","none");//hides the view button
@@ -264,6 +283,7 @@ $(document).ready(function () {//all functions inside of it will run only after 
 
         clonedItem.appendTo(".cart_page_container .cart .cart_contents .orderItems .orderItems1");//appends cloned item to cart
         getNumber();
+        copyCart();//updates cart in memory
 
         //prevents cloning of the same block multiple times
         $(this).click(function () {
@@ -275,7 +295,13 @@ $(document).ready(function () {//all functions inside of it will run only after 
         clonedItem.find(".removeItemButton").click(function () {
             clonedItem.remove();
             getNumber();
+            copyCart();//updates cart in memory
         });
+    });
+    $(".removeItemButton").click(function () {//removes the ordered item if it was pasted onto the page
+        $(this).closest(".jsItemBlock").remove();
+        getNumber();//updates price and amount counter
+        copyCart();//updates cart in memory
     });
 
     //description block***********************************
