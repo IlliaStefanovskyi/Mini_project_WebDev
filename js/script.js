@@ -124,7 +124,14 @@ function getNumber() {
         });
         if (pricesArray.length > 0) {
             for (let i = 0; i < pricesArray.length; i++) { // Loops through arrays
-                sum += (pricesArray[i] * amountArray[i]); // Calculates subtotal for each item and adds to sum
+                if(amountArray[i]>0){
+                    sum += (pricesArray[i] * amountArray[i]); // Calculates subtotal for each item and adds to sum
+                }
+                else if(amountArray[i]<=0){//if amount is negative or 0
+                    $(".hiddenNumberInput").eq(i).val("1");//input stays at 1
+                    sum += pricesArray[i];//adds only one item to sum
+                    window.alert("Amount can't be negative.");
+                }
             }
             //this part adds delivery fee to the price
             var deliveryOption=$(".choiceDelivery").val();
