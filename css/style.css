@@ -565,6 +565,7 @@ row-gap:20px;
 .orderDetails{
     width:100%;
     margin-top:-14%;
+    height:115%;
     background-image:url("https://w0.peakpx.com/wallpaper/639/188/HD-wallpaper-toscany-italy-nature-toscana-vine-vino.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -629,7 +630,7 @@ li,.main_box legend{
     margin-left:5%;
     margin-right:5%;
     padding-top:5%;
-    margin-top: 3rem;
+    margin-bottom:14%;
     background-color: rgba(51, 45, 45, 0.843);
     border-radius: 10px;
     width: 60rem;
@@ -637,6 +638,22 @@ li,.main_box legend{
     display:flex;
     justify-content: center;
     flex-direction:column;
+}
+@media(max-height:1160px){
+    .main_box{
+        margin-top:10rem;
+        margin-bottom:3%;
+    }
+}
+@media(max-height:850px){
+    .main_box{
+        margin-top:30rem;
+    }
+}
+@media(max-height:500px){
+    .main_box{
+        margin-top:50rem;
+    }
 }
 
 .block_usability_change {
