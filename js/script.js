@@ -10,44 +10,21 @@ $(document).ready(function () {
     }
 
     $("#right_b").click(function () {
-        currentSlide = (currentSlide % totalSlides) + 1;//thats for the case if slide will be in position 4 out of 4 (it loops an array)
+        //thats for the case if slide will be in position 4 out of 4 (it loops an array)
+        currentSlide = (currentSlide % totalSlides) + 1;
         showSlide(currentSlide);
     });
     $("#left_b").click(function () {
-        currentSlide = (currentSlide - 2 + totalSlides) % totalSlides + 1;//(-2 because countdown of slides starts from 1, +1 compensates it)
+        //(-2 because countdown of slides starts from 1, +1 compensates it)
+        currentSlide = (currentSlide - 2 + totalSlides) % totalSlides + 1;
         showSlide(currentSlide);
     });
 
     showSlide(currentSlide);
 });
 
-
-/*cart script will be activated as only the page gets loaded, it has an array of integers, each time "Add to basket" is clicked on any product, its value(value="5") is transferred to this array. 
-each block id="block_5" and price id="price_5" of the product has an id with the same number, this way I can display this product block and count the value*/
-
-
-document.addEventListener('DOMContentLoaded', async function getDescription() {//this function receives the description of products from the API
-    /* THIS api stopped responding LAPTOPS
-    const url = 'https://latest-laptop-deals1.p.rapidapi.com/';//**********description API import
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'e7cf2100b3mshd9550b251301b38p11ea76jsnc7ff4c9dd65e',
-            'X-RapidAPI-Host': 'latest-laptop-deals1.p.rapidapi.com'
-        }
-    };
-
-    try {
-        const response = await fetch(url, options);//fetch function
-        const result = await response.json();//transformation to json
-        console.log(result);
-        let description = document.querySelectorAll(".item_block_text");//gets elements to change
-        for (let i = 0; i < 10; i++) {
-            description[i].innerHTML = result[i].title;//assigns new contents to the elements 
-        }
-    } catch (error) {
-        console.error(error);
-    }*/
+//this function receives the description of products from the API
+document.addEventListener('DOMContentLoaded', async function getDescription() {
     /*//PIZZA unblock for presentation only LIMIT 1500 PER MONTH
         const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=0';
         const url2= 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=10';
@@ -113,9 +90,21 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {/
 
 
 //The cart code starts here***************(BY ILLIA)
+function copyCart(){//copies or updates the copy of the cart whenever needed
+    var orderItemsHTML = document.querySelector(".orderItems1").outerHTML;//gets html of cart element
+    sessionStorage.setItem("copiedOrderItems", orderItemsHTML);//adds it to session storage
+}
+function pasteCart(){//pastes cart(if it exists) once the page is loaded
+    var copiedOrderItemsHTML = sessionStorage.getItem("copiedOrderItems");//gets item from session storage
+    if (copiedOrderItemsHTML) {//if it exists
+        //replace the existing div with the copied one
+        document.querySelector(".orderItems1").outerHTML = copiedOrderItemsHTML;//replaces old one with copied one
+    }
+}
 
-function getNumber() {//counts the amount of block elements inside of cart, counts the sum of ordered items
-    let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;
+//counts the amount of block elements inside of cart, counts the sum of ordered items and delivery
+function getNumber() {
+    let ordItemsCounter = $(".orderItems1").find(".jsItemBlock").length;//gets the amount of items ordered
     $(".cart_counter").text(ordItemsCounter);//displays it in the circle near cart
     if (ordItemsCounter == 0) {//says if there are any items in the basket
         $(".orderItems h2").text("No items yet");
@@ -137,38 +126,20 @@ function getNumber() {//counts the amount of block elements inside of cart, coun
             for (let i = 0; i < pricesArray.length; i++) { // Loops through arrays
                 sum += (pricesArray[i] * amountArray[i]); // Calculates subtotal for each item and adds to sum
             }
-            $(".orderItems h2").text("Sum: €" + sum.toFixed(2)); // Prints the sum
+            //this part adds delivery fee to the price
+            var deliveryOption=$(".choiceDelivery").val();
+            if(deliveryOption=="delivery"){
+                var total=sum+7.99;
+                $(".orderItems h2").text("Sum: €" + total.toFixed(2) +"(delivery included)."); // Prints the sum
+            }
+            else{
+                $(".orderItems h2").text("Sum: €" + sum.toFixed(2)); // Prints the sum
+            }
         }
     }
 }
 
-function copyCart(){//copies or updates the copy of the cart whenever needed
-    var orderItemsHTML = document.querySelector(".orderItems1").outerHTML;//gets html of cart element
-    sessionStorage.setItem("copiedOrderItems", orderItemsHTML);//adds it to session storage
-}
-function pasteCart(){
-    var copiedOrderItemsHTML = sessionStorage.getItem("copiedOrderItems");//gets item from session storage
-    if (copiedOrderItemsHTML) {//if it exists
-        //replace the existing div with the copied one
-        document.querySelector(".orderItems1").outerHTML = copiedOrderItemsHTML;//replaces old one with copied one
-    }
-}
-
-function submitOrder() {//submits order form 
-    let sum= $(".orderItems h2").text();//gets the sum
-    
-    window.alert("Order submitted! "+sum);//displays order details
-    
-    //email input validation
-    var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;//checks for dots,@ and spaces
-    var inputEmail = $(".email").val(); //get the value of the email
-    var result = pattern.test(inputEmail); //test the email
-
-    if (!result) {//if email is invalid
-        $(".alert").text("Invalid email");//changes alert element contents
-        return;//stops the function from proceeding
-    }
-}
+//hides and shows address details
 function deliveryAddress(){
     var choiceDelivery = $(".choiceDelivery").val();//receives the value
     if(choiceDelivery == "select"){//if type not chosen
@@ -191,12 +162,26 @@ function deliveryAddress(){
     }
 }
 
-$(document).ready(function () {//all functions inside of it will run only after the document is loaded
-    pasteCart();//pastes cart from memory if there is one
-    getNumber();//updates the price and counter
-    deliveryAddress();//disables send button untill delivery type is entered
-    $(".choiceDelivery").on("change", deliveryAddress);//calls for delivery input function once value of select was changed
+//submits order form 
+function submitOrder() {
+    let info= $(".orderItems h2").text();//gets the information about order
+    
+    window.alert("Order submitted! "+info);//displays order details
+    
+    //email input validation
+    var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;//checks for dots,@ and spaces
+    var inputEmail = $(".email").val(); //get the value of the email
+    var result = pattern.test(inputEmail); //test the email
 
+    if (!result) {//if email is invalid
+        $(".alert").text("Invalid email");//changes alert element contents
+        return;//stops the function from proceeding
+    }
+}
+
+//all functions inside of it will run only after the document is loaded
+$(document).ready(function () {
+    
     //products page************(by Khalid)
     var block=$(".productsLayout").find(".productsBlock");
     for(let i=0;i<19;i++){
@@ -208,29 +193,28 @@ $(document).ready(function () {//all functions inside of it will run only after 
     }
     //*************
 
-    //dropdown on products
-    var dropdownVisible=false;
-    $(".activator").click(function(){
-        dropdownVisible=!dropdownVisible;
-        if(dropdownVisible){//is true
-            $(".dropMiniItem").css("display","block");
+    pasteCart();//pastes cart from memory if there is one
+    getNumber();//updates the price and counter
+    deliveryAddress();//disables send button until delivery type is entered
+    $(".choiceDelivery").on("change", deliveryAddress);//calls for delivery input function once value of select was changed
+    $(".choiceDelivery").on("change", getNumber);//calls for it because 7.99 for delivery is charged
+
+    // Burger bar
+    var menuVisible = false;//by default
+    $(".burgerBar").click(function () {
+        menuVisible = !menuVisible;//anti-false
+        if (menuVisible) {//if true
+            $(".htmlPages").css("display", "flex");//display
         }
-        else{//is false
-            $(".dropMiniItem").css("display","none");
+        else {//false
+            $(".htmlPages").css("display", "none");//hide
         }
+    });
+    //fixes bug that menu gets hidden after increasing window size back to normal size
+    $(window).resize(function () {
+        $(".htmlPages").css("display", "flex");//display
     });
 
-    // for burger bar
-    var menuVisible=false;//by default
-    $(".burgerBar").click(function(){
-        menuVisible=!menuVisible;//anti-false
-        if(menuVisible){//if true
-            $(".htmlPages").css("display","flex");//display
-        }
-        else{
-            $(".htmlPages").css("display","none");//hide
-        }
-    });
     //makes cart visible or not, disables scrolling when cart is opened
     var cartOpen = false;
     $(".cart_image").click(function () {
@@ -262,9 +246,9 @@ $(document).ready(function () {//all functions inside of it will run only after 
             $(".orderDetails").css("display","none");//hides details
             $(".orderItems").css("display", "block");//displays items
         }
-
     });
 
+    //controls adding and removal of items to and from the cart
     $(".addItemButton").click(function () {
         var itemBlock = $(this).closest(".jsItemBlock");//finds item block inside which button was pressed
         var clonedItem = itemBlock.clone();//clones it
@@ -300,7 +284,8 @@ $(document).ready(function () {//all functions inside of it will run only after 
             copyCart();//updates cart in memory
         });
     });
-    $(".removeItemButton").click(function () {//removes the ordered item if it was pasted onto the page
+    //removes the ordered item if it was pasted onto the page
+    $(".removeItemButton").click(function () {
         $(this).closest(".jsItemBlock").remove();
         getNumber();//updates price and amount counter
         copyCart();//updates cart in memory
@@ -335,19 +320,15 @@ $(document).ready(function () {//all functions inside of it will run only after 
         
     });
 
-    var descriptionOpen = false;
     $(".item_button").click(function () {//disables scrolling when description is opened
-        descriptionOpen= !descriptionOpen;//anti-false, so true
-        if (descriptionOpen == true) {
             $("body").addClass("noScroll");//overflow:hidden
-        }
     });
     $(".closeDescription").click(function(){//returns scrolling when window is closed
         $("body").removeClass("noScroll");
-        descriptionOpen = false;
     });
 
-    $(".closeDescription").click(function () {//close the description window
+    //close the description window
+    $(".closeDescription").click(function () {
         $(".descriptionContainer").toggle();
     });
 });
