@@ -268,17 +268,19 @@ $(document).ready(function () {//all functions inside of it will run only after 
     $(".addItemButton").click(function () {
         var itemBlock = $(this).closest(".jsItemBlock");//finds item block inside which button was pressed
         var clonedItem = itemBlock.clone();//clones it
+
         var buttonInClonedItem = clonedItem.find(".addItemButton")//finds the button inside of cloned element
         buttonInClonedItem.removeClass("addItemButton");
         buttonInClonedItem.addClass("removeItemButton");//changes the class of button to remove...
         buttonInClonedItem.find("img").attr("src", "images/removeBasket.png");//changes image on the button
 
-        var imageInClonedItem=clonedItem.find(".images_prod_main");//**********does not work:( */
-        imageInClonedItem.removeClass(".images_prod_main");
+        var imageInClonedItem=clonedItem.find(".images_prod_main");//finds the image inside of cloned block
+        //removes class to which images are assigned in order to save the image of ordered item when block is pasted onto new page
+        imageInClonedItem.removeClass("images_prod_main");
 
         var viewButton = clonedItem.find(".item_button");
-        var amountCounter = clonedItem.find(".hiddenNumberInput");
         viewButton.css("display","none");//hides the view button
+        var amountCounter = clonedItem.find(".hiddenNumberInput");
         amountCounter.css("display","block");//displays amount input
 
         clonedItem.appendTo(".cart_page_container .cart .cart_contents .orderItems .orderItems1");//appends cloned item to cart
