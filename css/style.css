@@ -542,6 +542,7 @@ row-gap:20px;
 .cart_page_container{
     display:none;
     position:fixed;
+    z-index: 2;
 }
 .cart{
     display:flex;
