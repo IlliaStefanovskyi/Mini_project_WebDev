@@ -24,8 +24,8 @@ $(document).ready(function () {
 });
 
 //this function receives the description of products from the API
-document.addEventListener('DOMContentLoaded', async function getDescription() {
-    /*//PIZZA unblock for presentation only LIMIT 1500 PER MONTH
+/*document.addEventListener('DOMContentLoaded', async function getDescription() {
+    //PIZZA unblock for presentation only LIMIT 1500 PER MONTH
         const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=0';
         const url2= 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=10';
         const options = {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {
             }
         } catch (error) {
             console.error(error);
-        }*/
+        }
 
     //enter search requests here instead of a laptop word %20 is space dell%20laptop%20images
     const url1 = 'https://free-images-api.p.rapidapi.com/images/pizza';//*******Images API import (ONLY 1000 REQUESTS PER DAY!!!)
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async function getDescription() {
     } catch (error) {
         console.error(error);
     }
-});
+});*/
 
 
 //The cart code starts here***************(BY ILLIA)
