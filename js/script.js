@@ -268,6 +268,7 @@ $(document).ready(function () {
         var imageInClonedItem=clonedItem.find(".images_prod_main");//finds the image inside of cloned block
         //removes class to which images are assigned in order to save the image of ordered item when block is pasted onto new page
         imageInClonedItem.removeClass("images_prod_main");
+        imageInClonedItem.addClass("styling_Images_prod_main");
 
         var viewButton = clonedItem.find(".item_button");
         viewButton.css("display","none");//hides the view button
@@ -337,5 +338,27 @@ $(document).ready(function () {
     //close the description window
     $(".closeDescription").click(function () {
         $(".descriptionContainer").toggle();
+    });
+});
+//********Slides on main page******** (BY RAHHAL)
+$(document).ready(function() {
+    var swiper = new Swiper('.swiper', {
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
     });
 });

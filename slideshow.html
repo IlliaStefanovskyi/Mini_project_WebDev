@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-        </link>
-        <!--importing font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="js/script.js"></script>
-        <title>Slideshow</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slideshow.css">
+    </link>
+    <!--importing font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+    <title>Slideshow</title>
+</head>
 
 <body>
     <header>
-        <nav>
+        <nav id="navigation">
             <img class="burgerBar" src="images/burgerBar.webp" alt="see menu" height="25rem">
             <div class="pagesBlock">
                 <div class="htmlPages">
@@ -122,36 +125,61 @@
         
         </div>
     </header>
-    <main></main>
+    <main>
+        <!-- Sloide Show Images container -->
+        <div class="c1">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="images/1.jpg">
+                    </div>
+                    <div class="swiper-slide"><img src="images/2.jpeg"></div>
+                    <div class="swiper-slide"><img src="images/3.jpg"></div>
+                    <div class="swiper-slide"><img src="images/4.jpg"></div>
+                    <div class="swiper-slide"><img src="images/5.jpg"></div>
+                    <div class="swiper-slide"><img src="images/6.jpg"></div>
+                    <div class="swiper-slide"><img src="images/7.jpg"></div>
+                    <div class="swiper-slide"><img src="images/8.jpg"></div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+    
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+    
+        </div>
+    
+    </main>
     <footer>
         <div class="footer_block footer_block_s1">
             <p class="footer_p">Also you may be interested</p>
             <ul>
-                <a href="...">
-                    <li>Chinese cuisine</li>
+                <a href="index.html">
+                    <li>Company info</li>
                 </a>
-                <a href="...">
-                    <li>Our menu</li>
-                </a>
-                <a href="...">
+                <a href="index.html">
                     <li>Specials</li>
                 </a>
-                <a href="...">
-                    <li>Events</li>
+                <a href="index.html">
+                    <li>Discounts</li>
                 </a>
             </ul>
         </div>
         <div class="footer_block">
-            <p class="footer_p">Our locations</p>
+            <p class="footer_p">Additional</p>
             <ul>
-                <a href="...">
-                    <li>Chinese cuisine</li>
+                <a href="slideshow.html">
+                    <li>Slideshow</li>
                 </a>
-                <a href="...">
+                <a href="#navigation">
+                    <li>Navigation</li>
+                </a>
+                <a href="products.html">
                     <li>Our menu</li>
-                </a>
-                <a href="...">
-                    <li>Specials</li>
                 </a>
             </ul>
         </div>
@@ -159,10 +187,11 @@
             <p class="footer_p">Contacts</p>
             <ul>
                 <li class="footer_contact">Phone: +1234554321</li>
-                <li class="footer_contact">Our email: <a href="mailto:shop@gmail.com">shop@gmail.com</a></li>
+                <li class="footer_contact">Our email: <a href="mailto:ThePizzaCompany@gmail.com">shop@gmail.com</a></li>
             </ul>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>

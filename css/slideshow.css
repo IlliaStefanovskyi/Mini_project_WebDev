@@ -1,0 +1,78 @@
+/* Slide Show Page */
+
+.c1 {
+    width: 80%;
+    height: 80vh; 
+    background: #f0f0f0;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    margin: 15px auto; 
+    border-radius: 25px;
+    overflow: hidden; 
+    position: relative; 
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    position: relative; 
+    border: 15px solid grey;
+    
+}
+
+.swiper-slide,
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper .swiper-button-prev,
+.swiper .swiper-button-next {
+    color: gray;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    margin-top: -20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+.swiper .swiper-button-prev {
+    left: 10px;
+}
+
+.swiper .swiper-button-next {
+    right: 10px;
+}
+
+.swiper .swiper-pagination {
+    bottom: 10px;
+}
+
+.swiper .swiper-pagination-bullet {
+    background: black;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+}
+
+.swiper .swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .c1 {
+        width: 90%; 
+    }
+}
+/*// Slide Show Page */
