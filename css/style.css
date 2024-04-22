@@ -622,7 +622,8 @@ row-gap:20px;
     display:none;
     padding:3px;
     border-radius:100%;
-    background-image:linear-gradient(to top left,rgb(218, 67, 150),rgb(134, 116, 218))
+    background-image:linear-gradient(to top left,rgb(218, 67, 150),rgb(134, 116, 218));
+    z-index:5;
 }
 @keyframes shake {
     0% { transform: translateX(-5px); }
@@ -631,7 +632,7 @@ row-gap:20px;
     100% { transform: translateX(-5px); }
 }
 .switchImage:active{
-    animation:shake .5s;
+    animation:shake .3s;
 }
 
 @media(max-width:750px){

@@ -24,7 +24,7 @@ $(document).ready(function () {
 });
 
 //this function receives the description of products from the API
-/*document.addEventListener('DOMContentLoaded', async function getDescription() {
+document.addEventListener('DOMContentLoaded', async function getDescription() {
     //PIZZA unblock for presentation only LIMIT 1500 PER MONTH
         const url = 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=0';
         const url2= 'https://recipe-by-api-ninjas.p.rapidapi.com/v1/recipe?query=pizza&offset=10';
@@ -86,7 +86,7 @@ $(document).ready(function () {
     } catch (error) {
         console.error(error);
     }
-});*/
+});
 
 
 //The cart code starts here***************(BY ILLIA)
